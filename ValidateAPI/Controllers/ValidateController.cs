@@ -44,6 +44,16 @@ namespace ValidateAPI.Controllers
             return BadRequest();
         }
 
-       
+        [HttpPost]
+        [Route("ValidateHostHeader")]
+        public IActionResult ValidateHostHeader()
+        {
+            var headers = this.Request.Headers.ToDictionary(x => x.Key, x => x.Value);
+            if (headers.ContainsKey("Host"))
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
     }
 }
