@@ -25,8 +25,25 @@ namespace ValidateAPI.Controllers
         public IActionResult ValidatePhoneNumber(string phoneNumber)
         {
             var result = ValidateAPI.Helpers.PhoneNumber.IsPhoneNumberValid(phoneNumber);
-            return Ok(result);
+            if(result == true)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
         }
 
+        [HttpGet]
+        [Route("ValidateLength")]
+        public IActionResult ValidateLength(string word)
+        {
+            var result = Lenght.IsLengthValid(word);
+            if (result == true)
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+       
     }
 }
