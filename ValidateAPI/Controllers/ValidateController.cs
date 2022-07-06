@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ValidateAPI.Helpers;
+using ValidateAPI.Models;
 
 namespace ValidateAPI.Controllers
 {
@@ -11,12 +12,21 @@ namespace ValidateAPI.Controllers
         [Route("ValidateEmail")]
         public IActionResult ValidateEmail(string email)
         {
-           var valid = Email.IsEmailValid(email);
-           if(valid == true)
+            var valid = Email.IsEmailValid(email);
+            if (valid == true)
             {
                 return Ok();
             }
             return BadRequest();
         }
+
+        [HttpGet]
+        [Route("ValidatePhoneNumber")]
+        public IActionResult ValidatePhoneNumber(string phoneNumber)
+        {
+            var result = ValidateAPI.Helpers.PhoneNumber.IsPhoneNumberValid(phoneNumber);
+            return Ok(result);
+        }
+
     }
 }
