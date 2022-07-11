@@ -1,11 +1,10 @@
 ﻿namespace ValidateAPI.Helpers
 {
-    public class Lenght
+    public class Length
     {
-        public static bool IsLengthValid(string word)
+        public static bool IsLengthValid(string word, int length)
         {
-            var length = 6;
-            if (word.Length == 6)
+            if (word.Length == length)
             {
                 return true;
             }
