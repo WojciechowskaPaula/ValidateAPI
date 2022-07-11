@@ -62,12 +62,12 @@ namespace ValidateAPI.Controllers
 
         [HttpGet]
         [Route("ValidateLength")]
-        public IActionResult ValidateLength(string word)
+        public IActionResult ValidateLength(string word, int lenght)
         {
             try
             {
                 _logger.LogInformation($"action=validateLenght word={word}");
-                var result = Lenght.IsLengthValid(word);
+                var result = Length.IsLengthValid(word, lenght);
                 if (result == true)
                 {
                     _logger.LogInformation($"action=validateLenght msg='string lenght is valid'");
