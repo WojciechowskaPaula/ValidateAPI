@@ -8,8 +8,8 @@ namespace ValidateAPI.Controllers
     [ApiController]
     public class ValidateController : ControllerBase
     {
-        private readonly ILogger _logger;
-        public ValidateController(ILogger logger)
+        private readonly ILogger<ValidateController> _logger;
+        public ValidateController(ILogger<ValidateController> logger)
         {
             _logger = logger;
         }
@@ -80,19 +80,19 @@ namespace ValidateAPI.Controllers
         /// Check length validation
         /// </summary>
         /// <param name="word"></param>
-        /// <param name="lenght"></param>
+        /// <param name="length"></param>
         /// <returns>Boolean data type</returns>
         [HttpGet]
         [Route("ValidateLength")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult ValidateLength(string word, int lenght)
+        public IActionResult ValidateLength(string word, int length)
         {
             try
             {
                 _logger.LogInformation($"action=validateLength word={word}");
-                var result = Length.IsLengthValid(word, lenght);
+                var result = Length.IsLengthValid(word, length);
                 if (result == true)
                 {
                     _logger.LogInformation($"action=validateLength msg='string lenght is valid'");
